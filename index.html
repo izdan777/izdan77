@@ -30,7 +30,7 @@
     <div id="documents" class="page active">
 
       <h2>📁 Documents</h2>
-    
+
       <!-- Document Category Tabs -->
       <div class="doc-tabs">
         <button class="doc-tab active" onclick="showDocTab('identity')">Identity</button>
@@ -38,49 +38,50 @@
         <button class="doc-tab" onclick="showDocTab('property')">Property</button>
         <button class="doc-tab" onclick="showDocTab('work')">Work & Education</button>
       </div>
-    
-      <!-- Tab Contents -->
-      <div class="doc-content">
-    
-        <div id="identity" class="doc-page active">
 
-          <div class="doc-table-header">
-            <span>No.</span>
-            <span>Details</span>
-            <span>View</span>
+      <!-- ===== Identity Documents ===== -->
+      <div id="identity" class="doc-page active">
+
+        <!-- Desktop Header -->
+        <div class="doc-table-header desktop-only">
+          <span>No.</span>
+          <span>Details</span>
+          <span>View</span>
+        </div>
+
+        <!-- Document Items -->
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-number">1</div>
+            <div class="doc-details">National ID Card</div>
           </div>
-        
-          <!-- Sample Row -->
-          <div class="doc-table-row">
-            <span>1</span>
-            <span>National ID Card</span>
-            <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
+          <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
+        </div>
+
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-number">2</div>
+            <div class="doc-details">Passport</div>
           </div>
-        
-          <div class="doc-table-row">
-            <span>2</span>
-            <span>Passport</span>
-            <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
-          </div>
-        
+          <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
         </div>
-        
-    
-        <div id="family" class="doc-page">
-          <p>👨‍👩‍👦 Your family documents will appear here.</p>
-        </div>
-    
-        <div id="property" class="doc-page">
-          <p>🏠 Your property and asset documents will appear here.</p>
-        </div>
-    
-        <div id="work" class="doc-page">
-          <p>💼 Your work and education documents will appear here.</p>
-        </div>
-    
+
       </div>
-    
-    </div>    
+
+      <!-- Other Tabs -->
+      <div id="family" class="doc-page">
+        <p>👨‍👩‍👦 Your family documents will appear here.</p>
+      </div>
+
+      <div id="property" class="doc-page">
+        <p>🏠 Your property and asset documents will appear here.</p>
+      </div>
+
+      <div id="work" class="doc-page">
+        <p>💼 Your work and education documents will appear here.</p>
+      </div>
+
+    </div>
 
     <div id="events" class="page">
       <h2>📅 Events</h2>

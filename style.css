@@ -75,7 +75,7 @@ h2 {
   font-size: 18px;
 }
 
-/* ===== Mobile Responsive Styles ===== */
+/* ===== Mobile Menu ===== */
 @media (max-width: 768px) {
   .menu-btn {
     display: block;
@@ -114,7 +114,7 @@ h2 {
   }
 }
 
-/* ===== Document Tabs Styling ===== */
+/* ===== Document Tabs ===== */
 .doc-tabs {
   display: flex;
   overflow-x: auto;
@@ -138,15 +138,11 @@ h2 {
   color: white;
 }
 
-/* Document Content */
-.doc-content {
-  margin-top: 15px;
-}
-
+/* Document Page */
 .doc-page {
   display: none;
   background: #ffffff;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
 }
 
@@ -154,26 +150,44 @@ h2 {
   display: block;
 }
 
-/* ===== Identity Documents Table ===== */
-.doc-table-header,
-.doc-table-row {
+/* ===== Responsive Document List ===== */
+
+/* Desktop Header */
+.desktop-only {
   display: grid;
   grid-template-columns: 50px 1fr 80px;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 10px;
-  border-radius: 8px;
-}
-
-.doc-table-header {
   font-weight: bold;
-  background-color: #f1f5f9;
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
 }
 
-.doc-table-row {
-  background-color: #ffffff;
-  margin-top: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+/* Document Card */
+.doc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.doc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doc-number {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.doc-details {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 /* View Button */
@@ -181,9 +195,9 @@ h2 {
   background-color: #1f2937;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 8px 14px;
   font-size: 13px;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -191,16 +205,19 @@ h2 {
   background-color: #374151;
 }
 
-/* Mobile Responsive Tweaks */
+/* ===== Mobile Optimization ===== */
 @media (max-width: 600px) {
-  .doc-table-header,
-  .doc-table-row {
-    grid-template-columns: 40px 1fr 65px;
-    font-size: 14px;
+  .desktop-only {
+    display: none;
+  }
+
+  .doc-item {
+    flex-direction: row;
+    gap: 10px;
   }
 
   .view-btn {
     font-size: 12px;
-    padding: 5px 8px;
+    padding: 8px 12px;
   }
 }
