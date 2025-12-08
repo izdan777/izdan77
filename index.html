@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Personal Portal</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ===== Top Navigation ===== -->
+  <div class="top-nav">
+    <div class="logo">My Portal</div>
+
+    <!-- Mobile Menu Button -->
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="navLinks">
+      <button onclick="showPage('documents')">Documents</button>
+      <button onclick="showPage('events')">Events</button>
+      <button onclick="showPage('todo')">To-Do</button>
+      <button onclick="showPage('finance')">Finance</button>
+      <button onclick="showPage('medical')">Medical</button>
+    </div>
+  </div>
+
+  <!-- ===== Main Content Area ===== -->
+  <div class="content">
+
+    <div id="documents" class="page active">
+
+      <h2>📁 Documents</h2>
+    
+      <!-- Document Category Tabs -->
+      <div class="doc-tabs">
+        <button class="doc-tab active" onclick="showDocTab('identity')">Identity</button>
+        <button class="doc-tab" onclick="showDocTab('family')">Family</button>
+        <button class="doc-tab" onclick="showDocTab('property')">Property</button>
+        <button class="doc-tab" onclick="showDocTab('work')">Work & Education</button>
+      </div>
+    
+      <!-- Tab Contents -->
+      <div class="doc-content">
+    
+        <div id="identity" class="doc-page active">
+
+          <div class="doc-table-header">
+            <span>No.</span>
+            <span>Details</span>
+            <span>View</span>
+          </div>
+        
+          <!-- Sample Row -->
+          <div class="doc-table-row">
+            <span>1</span>
+            <span>National ID Card</span>
+            <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
+          </div>
+        
+          <div class="doc-table-row">
+            <span>2</span>
+            <span>Passport</span>
+            <button class="view-btn" onclick="viewPDF('p1.pdf')">View</button>
+          </div>
+        
+        </div>
+        
+    
+        <div id="family" class="doc-page">
+          <p>👨‍👩‍👦 Your family documents will appear here.</p>
+        </div>
+    
+        <div id="property" class="doc-page">
+          <p>🏠 Your property and asset documents will appear here.</p>
+        </div>
+    
+        <div id="work" class="doc-page">
+          <p>💼 Your work and education documents will appear here.</p>
+        </div>
+    
+      </div>
+    
+    </div>    
+
+    <div id="events" class="page">
+      <h2>📅 Events</h2>
+      <p>Your events will appear here.</p>
+    </div>
+
+    <div id="todo" class="page">
+      <h2>✅ To-Do</h2>
+      <p>Your to-do list will appear here.</p>
+    </div>
+
+    <div id="finance" class="page">
+      <h2>💰 Finance</h2>
+      <p>Your finance records will appear here.</p>
+    </div>
+
+    <div id="medical" class="page">
+      <h2>🏥 Medical</h2>
+      <p>Your medical records will appear here.</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

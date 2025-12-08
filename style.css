@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Top Navigation */
+.top-nav {
+  background-color: #1f2937;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nav-links button:hover {
+  background-color: #374151;
+}
+
+/* Content */
+.content {
+  padding: 15px;
+  background-color: #f3f4f6;
+  min-height: calc(100vh - 60px);
+}
+
+/* Pages */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* ===== Mobile Responsive Styles ===== */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #1f2937;
+    width: 100%;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links button {
+    text-align: left;
+    padding: 12px 20px;
+    width: 100%;
+  }
+}
+
+/* Tablet & Desktop */
+@media (min-width: 769px) {
+  .content {
+    padding: 30px;
+  }
+
+  .page.active {
+    padding: 25px;
+  }
+}
+
+/* ===== Document Tabs Styling ===== */
+.doc-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.doc-tab {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.doc-tab.active {
+  background-color: #1f2937;
+  color: white;
+}
+
+/* Document Content */
+.doc-content {
+  margin-top: 15px;
+}
+
+.doc-page {
+  display: none;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.doc-page.active {
+  display: block;
+}
+
+/* ===== Identity Documents Table ===== */
+.doc-table-header,
+.doc-table-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 80px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: 8px;
+}
+
+.doc-table-header {
+  font-weight: bold;
+  background-color: #f1f5f9;
+}
+
+.doc-table-row {
+  background-color: #ffffff;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+/* View Button */
+.view-btn {
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #374151;
+}
+
+/* Mobile Responsive Tweaks */
+@media (max-width: 600px) {
+  .doc-table-header,
+  .doc-table-row {
+    grid-template-columns: 40px 1fr 65px;
+    font-size: 14px;
+  }
+
+  .view-btn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
