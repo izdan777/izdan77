@@ -13,14 +13,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  position: relative;       /* ✅ REQUIRED for dropdown */
+  position: relative;
   z-index: 1000;
 }
 
-.logo {
-  font-weight: bold;
-}
+.logo { font-weight: bold; }
 
 /* Hamburger button – hidden on desktop */
 .menu-btn {
@@ -46,10 +43,7 @@
 }
 
 /* ===== Main Pages ===== */
-.page { 
-  display: none; 
-}
-
+.page { display: none; }
 .page.active {
   display: block;
   background: white;
@@ -68,7 +62,8 @@
   display: flex;
   gap: 8px;
   margin: 12px 0;
-  overflow-x: auto;
+  overflow-x: hidden;        /* Hide horizontal scroll */
+  justify-content: space-between;
 }
 
 .doc-tab {
@@ -77,6 +72,8 @@
   padding: 10px 16px;
   border-radius: 20px;
   cursor: pointer;
+  flex: 1 1 auto;            /* Shrink to fit screen */
+  text-align: center;
 }
 
 .doc-tab.active {
@@ -85,13 +82,8 @@
 }
 
 /* ===== Document Pages ===== */
-.doc-page {
-  display: none;
-}
-
-.doc-page.active {
-  display: block;
-}
+.doc-page { display: none; }
+.doc-page.active { display: block; }
 
 /* ===== Table Layout ===== */
 .doc-header,
@@ -140,38 +132,42 @@
   display: none;
 }
 
-/* ✅✅ MOBILE HAMBURGER MENU FIX ✅✅ */
+/* ===== MOBILE HAMBURGER MENU ===== */
 @media (max-width: 768px) {
 
   /* Show hamburger icon */
-  .menu-btn {
-    display: block;
-  }
+  .menu-btn { display: block; }
 
   /* Turn menu into dropdown */
   .nav-links {
     display: none;
     flex-direction: column;
     background: #1f2937;
-
     position: absolute;
-    top: 100%;               /* ✅ Always sits below navbar */
+    top: 100%;
     left: 0;
     width: 100%;
-
     border-top: 1px solid #374151;
   }
 
-  /* Show menu when toggled */
-  .nav-links.show {
-    display: flex;
-  }
+  .nav-links.show { display: flex; }
 
   .nav-links button {
     width: 100%;
     text-align: left;
     padding: 16px 20px;
     font-size: 16px;
+  }
+
+  /* Make document tabs fit screen on mobile */
+  .doc-tabs {
+    justify-content: space-between;
+  }
+
+  .doc-tab {
+    flex: 1 1 22%;  /* 4 tabs fit in one row */
+    padding: 8px 4px;
+    font-size: 13px;
   }
 }
 

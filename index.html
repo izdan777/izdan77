@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<!-- ===== Top Navigation ===== -->
 <div class="top-nav">
   <div class="logo">My Portal</div>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -27,6 +28,7 @@
   <div id="documents" class="page active">
     <h2>📁 Documents</h2>
 
+    <!-- Document Category Tabs -->
     <div class="doc-tabs">
       <button class="doc-tab active" onclick="showDocTab(event,'identity')">Identity</button>
       <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
@@ -36,7 +38,6 @@
 
     <!-- Identity Page -->
     <div id="identity" class="doc-page active" data-empty="true">
-
       <div class="doc-header">
         <div>No.</div>
         <div>Details</div>
@@ -56,47 +57,38 @@
         <div>Passport</div>
         <button onclick="viewPDF('p1.pdf')">View</button>
       </div>
-
     </div>
 
     <!-- Family Page -->
     <div id="family" class="doc-page" data-empty="true">
-
       <div class="doc-header">
         <div>No.</div>
         <div>Details</div>
         <div>View</div>
       </div>
-
       <div class="empty-msg">No family documents added.</div>
-
     </div>
 
     <!-- Property Page -->
     <div id="property" class="doc-page" data-empty="true">
-
       <div class="doc-header">
         <div>No.</div>
         <div>Details</div>
         <div>View</div>
       </div>
-
       <div class="empty-msg">No property documents added.</div>
-
     </div>
 
     <!-- Work Page -->
     <div id="work" class="doc-page" data-empty="true">
-
       <div class="doc-header">
         <div>No.</div>
         <div>Details</div>
         <div>View</div>
       </div>
-
       <div class="empty-msg">No work & education documents added.</div>
-
     </div>
+
   </div>
 
   <!-- Other Pages -->
