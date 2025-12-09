@@ -1,7 +1,6 @@
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
-
   document.getElementById('navLinks').classList.remove('show');
 }
 
@@ -32,5 +31,4 @@ function checkEmptyTabs() {
   });
 }
 
-// Run on load
 window.onload = checkEmptyTabs;

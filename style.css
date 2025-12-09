@@ -12,13 +12,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo { font-weight: bold; }
 
-.menu-btn { display: none; }
+.menu-btn {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
 
-.nav-links { display: flex; gap: 10px; }
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
 
 .nav-links button {
   background: none;
@@ -47,6 +57,7 @@
   display: flex;
   gap: 8px;
   margin: 12px 0;
+  overflow-x: auto;
 }
 
 .doc-tab {
@@ -62,14 +73,9 @@
   color: white;
 }
 
-/* THIS IS THE KEY FIX ⬇️ */
-.doc-page { 
-  display: none; 
-}
-
-.doc-page.active {
-  display: block;
-}
+/* Doc Pages */
+.doc-page { display: none; }
+.doc-page.active { display: block; }
 
 /* Table Layout */
 .doc-header, .doc-row {
@@ -99,15 +105,7 @@
   border-radius: 6px;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .doc-header, .doc-row {
-    grid-template-columns: 40px 1fr 60px;
-    font-size: 14px;
-  }
-}
-
-/* Empty message styling */
+/* Empty message */
 .empty-msg {
   background: #f9fafb;
   color: #6b7280;
@@ -118,7 +116,45 @@
   margin-bottom: 10px;
 }
 
-/* Hide empty message when rows exist */
+/* Hide empty message if content exists */
 .doc-page:not([data-empty="true"]) .empty-msg {
   display: none;
+}
+
+/* MOBILE NAVBAR FIX */
+@media (max-width: 768px) {
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #1f2937;
+    position: absolute;
+    width: 100%;
+    top: 58px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links button {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 600px) {
+  .doc-header, .doc-row {
+    grid-template-columns: 40px 1fr 60px;
+    font-size: 14px;
+  }
 }
