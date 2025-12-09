@@ -5,6 +5,7 @@
   font-family: Arial, sans-serif;
 }
 
+/* ===== Top Navigation ===== */
 .top-nav {
   background: #1f2937;
   color: white;
@@ -12,19 +13,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
+
+  position: relative;       /* ✅ REQUIRED for dropdown */
   z-index: 1000;
 }
 
-.logo { font-weight: bold; }
-
-.menu-btn {
-  display: none;
-  font-size: 22px;
-  cursor: pointer;
+.logo {
+  font-weight: bold;
 }
 
+/* Hamburger button – hidden on desktop */
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Desktop menu */
 .nav-links {
   display: flex;
   gap: 10px;
@@ -35,10 +41,15 @@
   color: white;
   border: none;
   padding: 8px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-/* Pages */
-.page { display: none; }
+/* ===== Main Pages ===== */
+.page { 
+  display: none; 
+}
+
 .page.active {
   display: block;
   background: white;
@@ -52,7 +63,7 @@
   padding: 12px;
 }
 
-/* Tabs */
+/* ===== Document Tabs ===== */
 .doc-tabs {
   display: flex;
   gap: 8px;
@@ -73,12 +84,18 @@
   color: white;
 }
 
-/* Doc Pages */
-.doc-page { display: none; }
-.doc-page.active { display: block; }
+/* ===== Document Pages ===== */
+.doc-page {
+  display: none;
+}
 
-/* Table Layout */
-.doc-header, .doc-row {
+.doc-page.active {
+  display: block;
+}
+
+/* ===== Table Layout ===== */
+.doc-header,
+.doc-row {
   display: grid;
   grid-template-columns: 50px 1fr 70px;
   gap: 10px;
@@ -89,23 +106,26 @@
 .doc-header {
   font-weight: bold;
   background: #f1f5f9;
+  border-radius: 10px;
 }
 
 .doc-row {
-  background: #fff;
+  background: #ffffff;
   margin-top: 8px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .doc-row button {
   background: #1f2937;
   color: white;
   border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
-/* Empty message */
+/* ===== Empty Message ===== */
 .empty-msg {
   background: #f9fafb;
   color: #6b7280;
@@ -116,44 +136,49 @@
   margin-bottom: 10px;
 }
 
-/* Hide empty message if content exists */
 .doc-page:not([data-empty="true"]) .empty-msg {
   display: none;
 }
 
-/* MOBILE NAVBAR FIX */
+/* ✅✅ MOBILE HAMBURGER MENU FIX ✅✅ */
 @media (max-width: 768px) {
 
+  /* Show hamburger icon */
   .menu-btn {
     display: block;
   }
 
+  /* Turn menu into dropdown */
   .nav-links {
     display: none;
     flex-direction: column;
     background: #1f2937;
+
     position: absolute;
-    width: 100%;
-    top: 58px;
+    top: 100%;               /* ✅ Always sits below navbar */
     left: 0;
-    padding: 10px 0;
+    width: 100%;
+
+    border-top: 1px solid #374151;
   }
 
+  /* Show menu when toggled */
   .nav-links.show {
     display: flex;
   }
 
   .nav-links button {
-    text-align: left;
-    padding: 14px 20px;
-    font-size: 16px;
     width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 16px;
   }
 }
 
 /* Small phones */
 @media (max-width: 600px) {
-  .doc-header, .doc-row {
+  .doc-header,
+  .doc-row {
     grid-template-columns: 40px 1fr 60px;
     font-size: 14px;
   }
