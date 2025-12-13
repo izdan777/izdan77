@@ -84,7 +84,47 @@
 
     <div id="events" class="page"><h2>📅 Events</h2></div>
     <div id="todo" class="page"><h2>✅ To-Do</h2></div>
-    <div id="finance" class="page"><h2>💰 Finance</h2></div>
+    <div id="finance" class="page">
+  <h2>💰 Finance</h2>
+
+  <!-- Finance Tabs -->
+  <div class="doc-tabs">
+    <button class="doc-tab active" onclick="showFinanceTab(event,'loans')">Loans</button>
+    <button class="doc-tab" onclick="showFinanceTab(event,'payables')">Payables</button>
+  </div>
+
+  <!-- LOANS -->
+  <div id="loans" class="finance-page active">
+    <div class="finance-header">
+      <div>Loan Description</div>
+      <div>Amount</div>
+    </div>
+
+    <div class="finance-row">
+      <div>Vashaafaaru and Cyk Maraamaathu</div>
+      <div>MVR 5,600.00</div>
+    </div>
+  </div>
+
+  <!-- PAYABLES -->
+  <div id="payables" class="finance-page">
+    <div class="finance-header">
+      <div>Payable Description</div>
+      <div>Amount</div>
+    </div>
+
+    <div class="finance-row">
+      <div>Mamma</div>
+      <div>MVR 1,661.65</div>
+    </div>
+
+    <div class="finance-row">
+      <div>Club Amigos</div>
+      <div>MVR 11,999.44</div>
+    </div>
+  </div>
+</div>
+
     <div id="medical" class="page"><h2>🏥 Medical</h2></div>
 
     <div id="birthdays" class="page">

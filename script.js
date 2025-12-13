@@ -50,3 +50,16 @@ function showDocTab(event, tabId) {
 function viewPDF(file) {
   window.open(file, "_blank");
 }
+
+function showFinanceTab(event, tabId) {
+  document.querySelectorAll('.finance-page').forEach(p =>
+    p.classList.remove('active')
+  );
+
+  document.querySelectorAll('#finance .doc-tab').forEach(t =>
+    t.classList.remove('active')
+  );
+
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
