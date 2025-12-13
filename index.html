@@ -4,111 +4,91 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Personal Portal</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1f2937">
 
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- ===== Top Navigation ===== -->
-<div class="top-nav">
-  <div class="logo">My Portal</div>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-  <div class="nav-links" id="navLinks">
-    <button onclick="showPage('documents')">Documents</button>
-    <button onclick="showPage('events')">Events</button>
-    <button onclick="showPage('todo')">To-Do</button>
-    <button onclick="showPage('finance')">Finance</button>
-    <button onclick="showPage('medical')">Medical</button>
+<!-- 🔐 PIN LOCK SCREEN -->
+<div id="lockScreen" class="lock-screen">
+  <div class="lock-card">
+    <h2>🔐 Enter PIN</h2>
+    <input type="password" id="pinInput" maxlength="4" inputmode="numeric" placeholder="4-digit PIN">
+    <div class="lock-actions">
+      <button onclick="checkPIN()">Enter</button>
+      <button class="cancel" onclick="cancelApp()">Cancel</button>
+    </div>
+    <p id="pinError" class="pin-error"></p>
   </div>
 </div>
 
-<div class="content">
+<!-- 🔓 MAIN APP -->
+<div id="app" class="app hidden">
 
-  <!-- DOCUMENTS PAGE -->
-  <div id="documents" class="page active">
-    <h2>📁 Documents</h2>
+  <div class="top-nav">
+    <div class="logo">My Portal</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <!-- Document Category Tabs -->
-    <div class="doc-tabs">
-      <button class="doc-tab active" onclick="showDocTab(event,'identity')">Identity</button>
-      <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
-      <button class="doc-tab" onclick="showDocTab(event,'property')">Property</button>
-      <button class="doc-tab" onclick="showDocTab(event,'work')">Work & Education</button>
+    <div class="nav-links" id="navLinks">
+      <button onclick="showPage('documents')">Documents</button>
+      <button onclick="showPage('events')">Events</button>
+      <button onclick="showPage('todo')">To-Do</button>
+      <button onclick="showPage('finance')">Finance</button>
+      <button onclick="showPage('medical')">Medical</button>
     </div>
-
-    <!-- Identity Page -->
-    <div id="identity" class="doc-page active" data-empty="true">
-      <div class="doc-header">
-        <div>No.</div>
-        <div>Details</div>
-        <div>View</div>
-      </div>
-
-      <div class="empty-msg">No identity documents added.</div>
-
-      <div class="doc-row">
-        <div>1</div>
-        <div>Jeff's ID Card</div>
-        <button onclick="viewPDF('p1.pdf')">View</button>
-      </div>
-
-      <div class="doc-row">
-        <div>2</div>
-        <div>Rifoo's ID Card</div>
-        <button onclick="viewPDF('p1.pdf')">View</button>
-      </div>
-    </div>
-
-    <!-- Family Page -->
-    <div id="family" class="doc-page" data-empty="true">
-      <div class="doc-header">
-        <div>No.</div>
-        <div>Details</div>
-        <div>View</div>
-      </div>
-      <div class="empty-msg">No family documents added.</div>
-    </div>
-
-    <!-- Property Page -->
-    <div id="property" class="doc-page" data-empty="true">
-      <div class="doc-header">
-        <div>No.</div>
-        <div>Details</div>
-        <div>View</div>
-      </div>
-      <div class="empty-msg">No property documents added.</div>
-    </div>
-
-    <!-- Work Page -->
-    <div id="work" class="doc-page" data-empty="true">
-      <div class="doc-header">
-        <div>No.</div>
-        <div>Details</div>
-        <div>View</div>
-      </div>
-      <div class="empty-msg">No work & education documents added.</div>
-    </div>
-
   </div>
 
-  <!-- Other Pages -->
-  <div id="events" class="page"><h2>📅 Events</h2></div>
-  <div id="todo" class="page"><h2>✅ To-Do</h2></div>
-  <div id="finance" class="page"><h2>💰 Finance</h2></div>
-  <div id="medical" class="page"><h2>🏥 Medical</h2></div>
+  <div class="content">
 
+    <!-- DOCUMENTS PAGE -->
+    <div id="documents" class="page active">
+      <h2>📁 Documents</h2>
+
+      <div class="doc-tabs">
+        <button class="doc-tab active" onclick="showDocTab(event,'identity')">Identity</button>
+        <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
+        <button class="doc-tab" onclick="showDocTab(event,'property')">Property</button>
+        <button class="doc-tab" onclick="showDocTab(event,'work')">Work & Education</button>
+      </div>
+
+      <div id="identity" class="doc-page active" data-empty="false">
+        <div class="doc-header">
+          <div>No.</div><div>Details</div><div>View</div>
+        </div>
+        <div class="doc-row">
+          <div>1</div><div>National ID Card</div>
+          <button onclick="viewPDF('p1.pdf')">View</button>
+        </div>
+        <div class="doc-row">
+          <div>2</div><div>Passport</div>
+          <button onclick="viewPDF('p1.pdf')">View</button>
+        </div>
+      </div>
+
+      <div id="family" class="doc-page" data-empty="true">
+        <div class="empty-msg">No family documents added.</div>
+      </div>
+
+      <div id="property" class="doc-page" data-empty="true">
+        <div class="empty-msg">No property documents added.</div>
+      </div>
+
+      <div id="work" class="doc-page" data-empty="true">
+        <div class="empty-msg">No work & education documents added.</div>
+      </div>
+    </div>
+
+    <div id="events" class="page"><h2>📅 Events</h2></div>
+    <div id="todo" class="page"><h2>✅ To-Do</h2></div>
+    <div id="finance" class="page"><h2>💰 Finance</h2></div>
+    <div id="medical" class="page"><h2>🏥 Medical</h2></div>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(() => console.log('Service Worker Registered'));
-  }
-  </script>
-  
 </body>
 </html>

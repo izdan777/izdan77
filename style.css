@@ -179,3 +179,68 @@
     font-size: 14px;
   }
 }
+
+/* ===== PIN LOCK SCREEN ===== */
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  background: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.lock-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.lock-card h2 {
+  margin-bottom: 15px;
+}
+
+.lock-card input {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 6px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 15px;
+}
+
+.lock-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.lock-actions button {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #1f2937;
+  color: white;
+}
+
+.lock-actions .cancel {
+  background: #9ca3af;
+}
+
+.pin-error {
+  color: #dc2626;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
