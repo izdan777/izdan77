@@ -324,3 +324,69 @@
     font-size: 14px;
   }
 }
+
+.birthday-filter {
+  margin: 10px 0 20px;
+}
+
+.birthday-filter select {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.birthday-month h3 {
+  margin-top: 25px;
+}
+
+.empty-msg {
+  font-style: italic;
+  color: #777;
+}
+
+.add-btn {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+}
+
+.todo-box {
+  margin-bottom: 20px;
+}
+
+.todo-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-header,
+.todo-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 80px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.todo-header {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.todo-row button {
+  padding: 4px 6px;
+}
+
+.error-text {
+  color: red;
+  font-size: 13px;
+}
+
+.hidden {
+  display: none;
+}
