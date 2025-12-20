@@ -508,3 +508,43 @@ input:checked + .slider:before {
   padding: 8px 12px;
   cursor: pointer;
 }
+
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('portalicon.jpg') center/cover no-repeat;
+  background-size: cover;
+  opacity: 0; /* start hidden */
+  z-index: 1000;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: scale(1); /* start at normal size */
+}
+
+#splash-screen.show {
+  opacity: 1; /* fade-in */
+}
+
+#splash-screen .splash-text {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#splash-screen.show .splash-text {
+  opacity: 1; /* fade-in text */
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  #splash-screen .splash-text {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+}

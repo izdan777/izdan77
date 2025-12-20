@@ -4,13 +4,37 @@ const CORRECT_PIN = "0757";
 
 // ===== ON LOAD =====
 window.onload = () => {
-  document.getElementById("lockScreen").classList.remove("hidden");
-  document.getElementById("app").classList.add("hidden");
+  const splash = document.getElementById("splash-screen");
+  const lockScreen = document.getElementById("lockScreen");
+  const app = document.getElementById("app");
 
-  // Load data from Firebase
-  loadTodosFromFirebase();
-  loadGiftsFromFirebase();
+  lockScreen.classList.add("hidden");
+  app.classList.add("hidden");
+
+  // Trigger fade-in
+  splash.classList.add("show");
+
+  // Optional: subtle zoom-in during fade-in
+  splash.style.transform = "scale(1)";
+  splash.style.transition = "opacity 1s ease, transform 1s ease";
+
+  // Hold for 2 seconds, then fade-out (no scale change)
+  setTimeout(() => {
+    splash.style.opacity = "0"; // fade-out
+  }, 2000); // 2 seconds visible
+
+  // After fade-out, hide splash and show lock screen
+  setTimeout(() => {
+    splash.style.display = "none";
+    lockScreen.classList.remove("hidden");
+
+    // Load Firebase data
+    if (typeof loadTodosFromFirebase === "function") loadTodosFromFirebase();
+    if (typeof loadGiftsFromFirebase === "function") loadGiftsFromFirebase();
+  }, 3000); // total 3 seconds
 };
+
+
 
 // ===== PIN CHECK =====
 window.checkPIN = function () {
