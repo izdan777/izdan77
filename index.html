@@ -39,6 +39,7 @@
       <button onclick="showPage('finance')">Finance</button>
       <button onclick="showPage('medical')">Medical</button>
       <button onclick="showPage('birthdays')">Birthdays</button>
+      <button onclick="showPage('gifts')">Gifts</button>
     </div>
   </div>
 
@@ -154,176 +155,315 @@
     <div id="medical" class="page"><h2>🏥 Medical</h2></div>
 
     <div id="birthdays" class="page">
-      <h2>🎂 Birthdays</h2>
-    
-      <!-- Month Filter -->
-      <div class="birthday-filter">
-        <label for="monthSelect">Show:</label>
-        <select id="monthSelect" onchange="filterBirthdays()">
-          <option value="all">All Months</option>
-          <option value="JANUARY">January</option>
-          <option value="FEBRUARY">February</option>
-          <option value="MARCH">March</option>
-          <option value="APRIL">April</option>
-          <option value="MAY">May</option>
-          <option value="JUNE">June</option>
-          <option value="JULY">July</option>
-          <option value="AUGUST">August</option>
-          <option value="SEPTEMBER">September</option>
-          <option value="OCTOBER">October</option>
-          <option value="NOVEMBER">November</option>
-          <option value="DECEMBER">December</option>
-        </select>
-      </div>
-    
-      <!-- JANUARY -->
-      <div class="birthday-month" data-month="JANUARY">
-        <h3>JANUARY</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>ABBAS IBRAHIM</div><div>01st January 1974</div><div>51</div>
-        </div>
-      </div>
-    
-      <!-- FEBRUARY -->
-      <div class="birthday-month" data-month="FEBRUARY">
-        <h3>FEBRUARY</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>IFHAAM ABBAS</div><div>01st February 2010</div><div>15</div>
-        </div>
-        <div class="birthday-row">
-          <div>IZDAN BIN HASSAN JAUFAR</div><div>10th February 2022</div><div>3</div>
-        </div>
-      </div>
-    
-      <!-- MARCH -->
-      <div class="birthday-month" data-month="MARCH">
-        <h3>MARCH</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>AISHATH NAAJIYAA</div><div>21st March 1998</div><div>27</div>
-        </div>
-      </div>
-    
-      <!-- APRIL -->
-      <div class="birthday-month empty" data-month="APRIL">
-        <h3>APRIL</h3>
-        <p class="empty-msg">No birthdays in this month.</p>
-      </div>
-    
-      <!-- MAY -->
-      <div class="birthday-month" data-month="MAY">
-        <h3>MAY</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>MARIYAM ANJUM BINTH NASHID</div><div>01st May 2012</div><div>13</div>
-        </div>
-        <div class="birthday-row">
-          <div>MARIYAM RIFLA</div><div>06th May 1990</div><div>35</div>
-        </div>
-        <div class="birthday-row">
-          <div>AYDHIN BIN AHMED NASHID</div><div>10th May 2017</div><div>8</div>
-        </div>
-      </div>
-    
-      <!-- JUNE -->
-      <div class="birthday-month" data-month="JUNE">
-        <h3>JUNE</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>YOOSUF ZAYYAN HUSSAIN SHIBAU</div><div>13th June 2009</div><div>16</div>
-        </div>
-      </div>
-    
-      <!-- JULY -->
-      <div class="birthday-month" data-month="JULY">
-        <h3>JULY</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>IFZA BINTH ABBAS</div><div>06th July 2020</div><div>5</div>
-        </div>
-        <div class="birthday-row">
-          <div>ASIFA ALI</div><div>14th July 1984</div><div>41</div>
-        </div>
-        <div class="birthday-row">
-          <div>FATHIMATH INSHA ABBAS</div><div>15th July 2007</div><div>18</div>
-        </div>
-        <div class="birthday-row">
-          <div>EHAN BIN ABBAS</div><div>16th July 2017</div><div>8</div>
-        </div>
-        <div class="birthday-row">
-          <div>AMINATH ATHIKA</div><div>28th July 1979</div><div>46</div>
-        </div>
-      </div>
-    
-      <!-- AUGUST -->
-      <div class="birthday-month empty" data-month="AUGUST">
-        <h3>AUGUST</h3>
-        <p class="empty-msg">No birthdays in this month.</p>
-      </div>
-    
-      <!-- SEPTEMBER -->
-      <div class="birthday-month" data-month="SEPTEMBER">
-        <h3>SEPTEMBER</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>ALI MOHAMED</div><div>07th September 1945</div><div>80</div>
-        </div>
-        <div class="birthday-row">
-          <div>AISHATH RIZLA</div><div>15th September 1986</div><div>39</div>
-        </div>
-      </div>
-    
-      <!-- OCTOBER -->
-      <div class="birthday-month" data-month="OCTOBER">
-        <h3>OCTOBER</h3>
-        <div class="birthday-header">
-          <div>Name</div><div>Date of Birth</div><div>Age</div>
-        </div>
-        <div class="birthday-row">
-          <div>AISHATH ATHIFA</div><div>11th October 1971</div><div>54</div>
-        </div>
-        <div class="birthday-row">
-          <div>RUGIYYA AHMED</div><div>22nd October 1947</div><div>78</div>
-        </div>
-        <div class="birthday-row">
-          <div>HASSAN JAUFAR</div><div>30th October 1985</div><div>40</div>
-        </div>
-      </div>
-    
-      <!-- NOVEMBER -->
-      <div class="birthday-month empty" data-month="NOVEMBER">
-        <h3>NOVEMBER</h3>
-        <p class="empty-msg">No birthdays in this month.</p>
-      </div>
-    
-      <!-- DECEMBER -->
-      <div class="birthday-month empty" data-month="DECEMBER">
-        <h3>DECEMBER</h3>
-        <p class="empty-msg">No birthdays in this month.</p>
-      </div>
-    
-    </div>
-    
+  <h2>🎂 Birthdays</h2>
+
+  <!-- Month Filter -->
+  <div class="birthday-filter">
+    <label for="monthSelect">Show:</label>
+    <select id="monthSelect" onchange="filterBirthdays()">
+      <option value="all">All Months</option>
+      <option value="JANUARY">JANUARY</option>
+      <option value="FEBRUARY">FEBRUARY</option>
+      <option value="MARCH">MARCH</option>
+      <option value="APRIL">APRIL</option>
+      <option value="MAY">MAY</option>
+      <option value="JUNE">JUNE</option>
+      <option value="JULY">JULY</option>
+      <option value="AUGUST">AUGUST</option>
+      <option value="SEPTEMBER">SEPTEMBER</option>
+      <option value="OCTOBER">OCTOBER</option>
+      <option value="NOVEMBER">NOVEMBER</option>
+      <option value="DECEMBER">DECEMBER</option>
+    </select>
+  </div>
+
+  <!-- JANUARY -->
+  <div class="birthday-month" data-month="JANUARY">
+    <h3>JANUARY</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Abbas Ibrahim</td>
+          <td>01.01.1974</td>
+          <td>51</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FEBRUARY -->
+  <div class="birthday-month" data-month="FEBRUARY">
+    <h3>FEBRUARY</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ifhaam Abbas</td>
+          <td>01.02.2010</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Izdan Bin Hassan Jaufar</td>
+          <td>10.02.2022</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MARCH -->
+  <div class="birthday-month" data-month="MARCH">
+    <h3>MARCH</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aishath Naajiyaa</td>
+          <td>21.03.1998</td>
+          <td>27</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- APRIL -->
+  <div class="birthday-month empty" data-month="APRIL">
+    <h3>APRIL</h3>
+    <p class="empty-msg">No birthdays in this month.</p>
+  </div>
+
+  <!-- MAY -->
+  <div class="birthday-month" data-month="MAY">
+    <h3>MAY</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mariyam Anjum Binth Nashid</td>
+          <td>01.05.2012</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Mariyam Rifla</td>
+          <td>06.05.1990</td>
+          <td>35</td>
+        </tr>
+        <tr>
+          <td>Aydhin Bin Ahmed Nashid</td>
+          <td>10.05.2017</td>
+          <td>8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JUNE -->
+  <div class="birthday-month" data-month="JUNE">
+    <h3>JUNE</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Yoosuf Zayyan Hussain Shibau</td>
+          <td>13.06.2009</td>
+          <td>16</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JULY -->
+  <div class="birthday-month" data-month="JULY">
+    <h3>JULY</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ifza Binth Abbas</td>
+          <td>06.07.2020</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Asifa Ali</td>
+          <td>14.07.1984</td>
+          <td>41</td>
+        </tr>
+        <tr>
+          <td>Fathimath Insha Abbas</td>
+          <td>15.07.2007</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>Ehan Bin Abbas</td>
+          <td>16.07.2017</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Aminath Athika</td>
+          <td>28.07.1979</td>
+          <td>46</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AUGUST -->
+  <div class="birthday-month empty" data-month="AUGUST">
+    <h3>AUGUST</h3>
+    <p class="empty-msg">No birthdays in this month.</p>
+  </div>
+
+  <!-- SEPTEMBER -->
+  <div class="birthday-month" data-month="SEPTEMBER">
+    <h3>SEPTEMBER</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ali Mohamed</td>
+          <td>07.09.1945</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>Aishath Rizla</td>
+          <td>15.09.1986</td>
+          <td>39</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OCTOBER -->
+  <div class="birthday-month" data-month="OCTOBER">
+    <h3>OCTOBER</h3>
+    <table class="birthday-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aishath Athifa</td>
+          <td>11.10.1971</td>
+          <td>54</td>
+        </tr>
+        <tr>
+          <td>Rugiyya Ahmed</td>
+          <td>22.10.1947</td>
+          <td>78</td>
+        </tr>
+        <tr>
+          <td>Hassan Jaufar</td>
+          <td>30.10.1985</td>
+          <td>40</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOVEMBER -->
+  <div class="birthday-month empty" data-month="NOVEMBER">
+    <h3>NOVEMBER</h3>
+    <p class="empty-msg">No birthdays in this month.</p>
+  </div>
+
+  <!-- DECEMBER -->
+  <div class="birthday-month empty" data-month="DECEMBER">
+    <h3>DECEMBER</h3>
+    <p class="empty-msg">No birthdays in this month.</p>
+  </div>
+</div>
+
+<!-- GIFTS PAGE -->
+<div id="gifts" class="page">
+  <h2>🎁 Gift List</h2>
+
+  <!-- Add Gift Input -->
+  <div class="gift-add">
+    <input type="text" id="giftNameInput" placeholder="Enter gift recipient name">
+    <button onclick="addGiftFromInput()">Add Gift</button>
+  </div>
+
+  <!-- Filter -->
+  <div class="gift-filter">
+    <label for="giftFilter">Show:</label>
+    <select id="giftFilter" onchange="filterGifts()">
+      <option value="all">All</option>
+      <option value="pending">Pending</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
+
+  <!-- Gift Table -->
+  <table class="gift-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Toggle</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="giftList">
+      <!-- Gifts will be loaded from Firebase -->
+    </tbody>
+  </table>
+</div>
+
+
 
 
   </div>
 </div>
+<!-- Firebase v8 SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script src="script.js"></script>
 </body>
