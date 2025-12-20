@@ -5,6 +5,10 @@
   font-family: Arial, sans-serif;
 }
 
+html {
+  color-scheme: light;
+}
+
 /* ===== Top Navigation ===== */
 .top-nav {
   background: #1f2937;
@@ -366,39 +370,57 @@
   padding: 8px 12px;
 }
 
-.todo-box {
-  margin-bottom: 20px;
-}
-
-.todo-box input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 5px;
-}
-
-.todo-actions {
-  display: flex;
-  gap: 10px;
-}
-
+/* ===== TO-DO PAGE DESIGN ===== */
 .todo-header,
 .todo-row {
   display: grid;
-  grid-template-columns: 40px 1fr 80px 80px;
+  grid-template-columns: 40px 1fr 60px 60px; /* Longer text column, smaller buttons */
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #ccc; /* table-like border */
+  border-radius: 6px;
+  margin-bottom: 5px;
+  background: #ffffff;
 }
 
 .todo-header {
   font-weight: bold;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+  background: #f3f4f6;
 }
 
 .todo-row button {
-  padding: 4px 6px;
+  padding: 2px 6px; /* make buttons small */
+  font-size: 12px;
+  border-radius: 4px;
+  background: #1f2937;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
+
+.todo-row button:hover {
+  background: #374151;
+}
+
+.todo-box {
+  margin-bottom: 15px;
+}
+
+.todo-box input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-actions button {
+  padding: 4px 8px; /* smaller buttons for add/cancel */
+  font-size: 12px;
+  border-radius: 4px;
+}
+
 
 .error-text {
   color: red;

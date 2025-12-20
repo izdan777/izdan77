@@ -1,21 +1,3 @@
-// ===== FIREBASE CONFIG =====
-const firebaseConfig = {
-  apiKey: "AIzaSyDWibkHSuIiaThde78VD7ZodpN3kaokaW4",
-  authDomain: "family-portal-8b18e.firebaseapp.com",
-  databaseURL: "https://family-portal-8b18e-default-rtdb.firebaseio.com",
-  projectId: "family-portal-8b18e",
-  storageBucket: "family-portal-8b18e.appspot.com",
-  messagingSenderId: "651597096294",
-  appId: "1:651597096294:web:89ba3b3b6f5cc39ff454a7"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-const todoRef = database.ref("todos");
-const giftsRef = database.ref("gifts");
-
-console.log("🔥 Firebase connected");
 
 // ===== PIN CONFIG =====
 const CORRECT_PIN = "0757";
@@ -24,12 +6,14 @@ const CORRECT_PIN = "0757";
 window.onload = () => {
   document.getElementById("lockScreen").classList.remove("hidden");
   document.getElementById("app").classList.add("hidden");
+
+  // Load data from Firebase
   loadTodosFromFirebase();
   loadGiftsFromFirebase();
 };
 
 // ===== PIN CHECK =====
-function checkPIN() {
+window.checkPIN = function () {
   const pin = document.getElementById("pinInput").value;
   const error = document.getElementById("pinError");
 
@@ -39,100 +23,89 @@ function checkPIN() {
   } else {
     error.textContent = "Incorrect PIN";
   }
-}
+};
 
-function cancelApp() {
+window.cancelApp = function () {
   document.getElementById("pinInput").value = "";
   document.getElementById("pinError").textContent = "";
-}
+};
 
 // ===== NAVIGATION =====
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  document.getElementById('navLinks').classList.remove('show');
-}
+window.showPage = function (pageId) {
+  document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+  document.getElementById(pageId).classList.add("active");
+  document.getElementById("navLinks").classList.remove("show");
+};
 
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('show');
-}
+window.toggleMenu = function () {
+  document.getElementById("navLinks").classList.toggle("show");
+};
 
 // ===== DOCUMENT TABS =====
-function showDocTab(event, tabId) {
-  document.querySelectorAll('.doc-page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.doc-tab').forEach(t => t.classList.remove('active'));
+window.showDocTab = function (event, tabId) {
+  document.querySelectorAll(".doc-page").forEach((p) => p.classList.remove("active"));
+  document.querySelectorAll(".doc-tab").forEach((t) => t.classList.remove("active"));
 
-  document.getElementById(tabId).classList.add('active');
-  event.target.classList.add('active');
-}
+  document.getElementById(tabId).classList.add("active");
+  event.target.classList.add("active");
+};
 
 // ===== VIEW PDF =====
-function viewPDF(file) {
+window.viewPDF = function (file) {
   window.open(file, "_blank");
-}
+};
 
 // ===== FINANCE TABS =====
-function showFinanceTab(event, tabId) {
-  document.querySelectorAll('.finance-page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('#finance .doc-tab').forEach(t => t.classList.remove('active'));
+window.showFinanceTab = function (event, tabId) {
+  document.querySelectorAll(".finance-page").forEach((p) => p.classList.remove("active"));
+  document.querySelectorAll("#finance .doc-tab").forEach((t) => t.classList.remove("active"));
 
-  document.getElementById(tabId).classList.add('active');
-  event.target.classList.add('active');
-}
+  document.getElementById(tabId).classList.add("active");
+  event.target.classList.add("active");
+};
 
 // ===== BIRTHDAY FILTER =====
-function filterBirthdays() {
+window.filterBirthdays = function () {
   const selected = document.getElementById("monthSelect").value;
   const months = document.querySelectorAll(".birthday-month");
 
-  months.forEach(month => {
+  months.forEach((month) => {
     month.style.display =
       selected === "all" || month.dataset.month === selected ? "block" : "none";
   });
-}
+};
 
-// ===== TO-DO WITH FIREBASE =====
+// ===== TO-DO =====
 let todoCount = 0;
-
-// Open add box
-function openTodoBox() {
+window.openTodoBox = function () {
   document.getElementById("todoBox").classList.remove("hidden");
   document.getElementById("todoInput").value = "";
   document.getElementById("todoError").textContent = "";
-}
-
-// Close add box
-function closeTodoBox() {
+};
+window.closeTodoBox = function () {
   document.getElementById("todoBox").classList.add("hidden");
-}
-
-// Submit task (SAVE TO FIREBASE)
-function submitTodo() {
+};
+window.submitTodo = function () {
   const input = document.getElementById("todoInput");
   const text = input.value.trim();
   const error = document.getElementById("todoError");
 
-  if (text === "") {
+  if (!text) {
     error.textContent = "Task description cannot be empty";
     return;
   }
 
-  todoRef.push({
-    description: text,
-    createdAt: Date.now()
-  });
-
+  todoRef.push({ description: text, createdAt: Date.now() });
   closeTodoBox();
-}
+};
 
-// Load tasks from Firebase
-function loadTodosFromFirebase() {
-  todoRef.on("value", snapshot => {
+window.loadTodosFromFirebase = function () {
+  todoRef.on("value", (snapshot) => {
     const list = document.getElementById("todoList");
     list.innerHTML = "";
     todoCount = 0;
 
-    snapshot.forEach(child => {
+    snapshot.forEach((child) => {
       todoCount++;
       const data = child.val();
       const key = child.key;
@@ -151,36 +124,28 @@ function loadTodosFromFirebase() {
       list.appendChild(row);
     });
   });
-}
+};
 
-// Edit task (UPDATE FIREBASE)
-function editTodo(key, btn) {
+window.editTodo = function (key, btn) {
   const descDiv = btn.parentElement.querySelector(".desc");
   const newText = prompt("Edit task:", descDiv.textContent);
-
-  if (newText !== null && newText.trim() !== "") {
-    todoRef.child(key).update({
-      description: newText.trim()
-    });
+  if (newText && newText.trim() !== "") {
+    todoRef.child(key).update({ description: newText.trim() });
   }
-}
+};
 
-// Delete task (REMOVE FROM FIREBASE)
-function deleteTodo(key) {
+window.deleteTodo = function (key) {
   todoRef.child(key).remove();
-}
+};
 
-// ===== GIFTS WITH FIREBASE =====
-let giftCount = 0;
-
-// Load gifts from Firebase
-function loadGiftsFromFirebase() {
-  giftsRef.on("value", snapshot => {
+// ===== GIFTS =====
+window.loadGiftsFromFirebase = function () {
+  giftsRef.on("value", (snapshot) => {
     const list = document.getElementById("giftList");
     list.innerHTML = "";
-    giftCount = 0;
+    let giftCount = 0;
 
-    snapshot.forEach(child => {
+    snapshot.forEach((child) => {
       giftCount++;
       const data = child.val();
       const key = child.key;
@@ -196,7 +161,7 @@ function loadGiftsFromFirebase() {
         <td>${data.name}</td>
         <td>
           <label class="toggle-switch">
-            <input type="checkbox" ${status === "completed" ? "checked" : ""} onchange="toggleGiftFirebase(this, '${key}')">
+            <input type="checkbox" ${status === "completed" ? "checked" : ""} onchange="toggleGiftFirebase(this,'${key}')">
             <span class="slider"></span>
           </label>
         </td>
@@ -205,72 +170,30 @@ function loadGiftsFromFirebase() {
       list.appendChild(row);
     });
   });
-}
+};
 
-// Toggle gift status in Firebase
-function toggleGiftFirebase(checkbox, key) {
+window.toggleGiftFirebase = function (checkbox, key) {
   const row = checkbox.closest("tr");
   const name = row.children[1].innerText;
-  const statusCell = row.querySelector(".status");
+  const newStatus = checkbox.checked ? "completed" : "pending";
 
-  let newStatus = checkbox.checked ? "completed" : "pending";
-
-  if (checkbox.checked) {
-    if (!confirm(`Have you bought the gift for ${name}?`)) {
-      checkbox.checked = false;
-      return;
-    }
-  }
-
-  giftsRef.child(key).update({ status: newStatus });
-}
-
-// Add new gift
-function addGift(name) {
-  if (!name || name.trim() === "") return;
-  giftsRef.push({
-    name: name.trim(),
-    status: "pending"
-  });
-}
-
-// Prompt user to add gift
-function promptAddGift() {
-  const name = prompt("Enter the gift recipient's name:");
-  if (name && name.trim() !== "") addGift(name.trim());
-}
-
-// Filter gifts
-function filterGifts() {
-  const filter = document.getElementById("giftFilter").value;
-  const rows = document.querySelectorAll("#giftList tr");
-
-  rows.forEach(row => {
-    if (filter === "all" || row.dataset.status === filter) {
-      row.style.display = "";
-    } else {
-      row.style.display = "none";
-    }
-  });
-}
-
-// Add gift from input box
-function addGiftFromInput() {
-  const input = document.getElementById("giftNameInput");
-  const name = input.value.trim();
-
-  if (name === "") {
-    alert("Please enter a name.");
+  if (checkbox.checked && !confirm(`Have you bought the gift for ${name}?`)) {
+    checkbox.checked = false;
     return;
   }
 
-  // Push to Firebase
-  giftsRef.push({
-    name: name,
-    status: "pending"
-  });
+  giftsRef.child(key).update({ status: newStatus });
+};
 
-  // Clear input box
+window.addGiftFromInput = function () {
+  const input = document.getElementById("giftNameInput");
+  const name = input.value.trim();
+  if (!name) return alert("Enter a name");
+
+  // Push to Firebase using global ref
+  window.giftsRef.push({ name, status: "pending" });
+
+  // Clear input
   input.value = "";
-}
+};
 
