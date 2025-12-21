@@ -1,4 +1,3 @@
-
 // ===== PIN CONFIG =====
 const CORRECT_PIN = "0757";
 
@@ -27,11 +26,12 @@ window.onload = () => {
     splash.style.display = "none";
     lockScreen.classList.remove("hidden");
 
+    // Load Firebase data
     loadTodosFromFirebase();
     loadGiftsFromFirebase();
+    loadEventsFromFirebase(); // NEW: load events
   }, 3200);
 };
-
 
 // ===== PIN CHECK =====
 window.checkPIN = function () {
@@ -212,10 +212,7 @@ window.addGiftFromInput = function () {
   const name = input.value.trim();
   if (!name) return alert("Enter a name");
 
-  // Push to Firebase using global ref
   window.giftsRef.push({ name, status: "pending" });
-
-  // Clear input
   input.value = "";
 };
 
@@ -236,3 +233,101 @@ window.filterGifts = function () {
     }
   });
 };
+
+// ===== EVENTS =====
+function openEventBox() {
+  document.getElementById('eventBox').classList.remove('hidden');
+}
+
+function closeEventBox() {
+  document.getElementById('eventBox').classList.add('hidden');
+  clearEventInputs();
+}
+
+function clearEventInputs() {
+  document.getElementById('eventDate').value = '';
+  document.getElementById('eventTime').value = '';
+  document.getElementById('eventVenue').value = '';
+  document.getElementById('eventDescription').value = '';
+}
+
+// ===== Submit Event =====
+function submitEvent() {
+  let date = document.getElementById('eventDate').value;
+  let time = document.getElementById('eventTime').value; // optional
+  const venue = document.getElementById('eventVenue').value;
+  const description = document.getElementById('eventDescription').value;
+
+  // Validate required fields (date, venue, description)
+  if (!date || !venue || !description) {
+    alert('Please fill all required fields!');
+    return;
+  }
+
+  // Convert YYYY-MM-DD to DD:MM:YYYY
+  const dateParts = date.split('-'); 
+  date = `${dateParts[2]}:${dateParts[1]}:${dateParts[0]}`;
+
+  const eventRef = firebase.database().ref('events');
+  const newEventRef = eventRef.push();
+  const eventId = newEventRef.key;
+
+  const eventData = {
+    id: eventId,
+    date,
+    time: time || '', // if empty, store as empty string
+    venue,
+    description
+  };
+
+  // Save to Firebase ONLY
+  newEventRef.set(eventData)
+    .then(() => {
+      closeEventBox();
+    })
+    .catch((error) => alert('Error saving event: ' + error.message));
+}
+
+
+// ===== Complete Event =====
+function completeEvent(button, id) {
+  const card = button.parentElement;
+  card.remove();
+
+  // Delete from Firebase
+  firebase.database().ref('events').child(id).remove();
+}
+
+// ===== Load Events from Firebase =====
+function loadEventsFromFirebase() {
+  const eventRef = firebase.database().ref('events');
+
+  eventRef.on('value', (snapshot) => {
+    const eventList = document.getElementById('eventList');
+    eventList.innerHTML = ''; // clear list to avoid duplicates
+
+    const events = snapshot.val();
+    if (events) {
+      Object.values(events).forEach(eventData => addEventCard(eventData));
+    }
+  });
+}
+
+// ===== Add Event Card to Page =====
+function addEventCard(eventData) {
+  const eventList = document.getElementById('eventList');
+
+  const card = document.createElement('div');
+  card.className = 'event-card';
+  card.dataset.key = eventData.id; // store Firebase key
+
+  card.innerHTML = `
+    <div><strong>Date:</strong> ${eventData.date}</div>
+    <div><strong>Time:</strong> ${eventData.time}</div>
+    <div><strong>Venue:</strong> ${eventData.venue}</div>
+    <div><strong>Description:</strong> ${eventData.description}</div>
+    <button class="done-btn" onclick="completeEvent(this, '${eventData.id}')">Done</button>
+  `;
+
+  eventList.appendChild(card);
+}

@@ -98,7 +98,33 @@
       </div>
     </div>
 
-    <div id="events" class="page"><h2>📅 Events</h2></div>
+ <div id="events" class="page">
+  <h2>📅 Events</h2>
+
+  <!-- Add Event Button -->
+  <button class="add-btn" onclick="openEventBox()">+ Add Event</button>
+
+  <!-- Event Input Modal -->
+  <div id="eventBox" class="event-box hidden">
+    <div class="modal">
+      <div class="modal-content">
+        <input type="date" id="eventDate">
+        <input type="time" id="eventTime">
+        <input type="text" id="eventVenue" placeholder="Venue">
+        <textarea id="eventDescription" placeholder="Description"></textarea>
+        <div class="modal-actions">
+          <button onclick="submitEvent()">Submit</button>
+          <button class="cancel" onclick="closeEventBox()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event List -->
+  <div id="eventList"></div>
+</div>
+
+
     <div id="todo" class="page">
       <h2>✅ To-Do</h2>
     
