@@ -1,5 +1,5 @@
 {
-  "name": "My Personal Portal",
+  "name": "WELCOME TO THE PORTAL",
   "short_name": "Portal",
   "start_url": "./",
   "display": "standalone",
@@ -7,15 +7,16 @@
   "theme_color": "#1f2937",
   "orientation": "portrait",
   "icons": [
-    {
-      "src": "portalicon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "portalicon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  {
+    "src": "/portalicon.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "/portalicon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
+
 }
