@@ -5,35 +5,32 @@ const CORRECT_PIN = "0757";
 // ===== ON LOAD =====
 window.onload = () => {
   const splash = document.getElementById("splash-screen");
+  const splashText = splash.querySelector(".splash-text");
   const lockScreen = document.getElementById("lockScreen");
   const app = document.getElementById("app");
 
   lockScreen.classList.add("hidden");
   app.classList.add("hidden");
 
-  // Trigger fade-in
-  splash.classList.add("show");
-
-  // Optional: subtle zoom-in during fade-in
-  splash.style.transform = "scale(1)";
-  splash.style.transition = "opacity 1s ease, transform 1s ease";
-
-  // Hold for 2 seconds, then fade-out (no scale change)
+  // Fade text in
   setTimeout(() => {
-    splash.style.opacity = "0"; // fade-out
-  }, 2000); // 2 seconds visible
+    splash.classList.add("show");
+  }, 400);
 
-  // After fade-out, hide splash and show lock screen
+  // Fade splash out
+  setTimeout(() => {
+    splash.style.opacity = "0";
+  }, 2200);
+
+  // Remove splash & show PIN
   setTimeout(() => {
     splash.style.display = "none";
     lockScreen.classList.remove("hidden");
 
-    // Load Firebase data
-    if (typeof loadTodosFromFirebase === "function") loadTodosFromFirebase();
-    if (typeof loadGiftsFromFirebase === "function") loadGiftsFromFirebase();
-  }, 3000); // total 3 seconds
+    loadTodosFromFirebase();
+    loadGiftsFromFirebase();
+  }, 3200);
 };
-
 
 
 // ===== PIN CHECK =====
@@ -193,6 +190,7 @@ window.loadGiftsFromFirebase = function () {
       `;
       list.appendChild(row);
     });
+    filterGifts();
   });
 };
 
@@ -221,3 +219,20 @@ window.addGiftFromInput = function () {
   input.value = "";
 };
 
+// ===== GIFT FILTER =====
+window.filterGifts = function () {
+  const filter = document.getElementById("giftFilter").value;
+  const rows = document.querySelectorAll("#giftList tr");
+
+  rows.forEach(row => {
+    const status = row.dataset.status; // pending | completed
+
+    if (filter === "all") {
+      row.style.display = "";
+    } else if (filter === status) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
+    }
+  });
+};

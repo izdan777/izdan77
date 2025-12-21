@@ -14,10 +14,8 @@
 
   <!-- Splash Screen -->
 <div id="splash-screen">
-    <p class="splash-text">Welcome to the Portal</p>
+  <div class="splash-text">WELCOME TO THE PORTAL</div>
 </div>
-
-
 
 <!-- 🔐 PIN LOCK SCREEN -->
 <div id="lockScreen" class="lock-screen">
@@ -57,7 +55,7 @@
       <h2>📁 Documents</h2>
 
       <div class="doc-tabs">
-        <button class="doc-tab active" onclick="showDocTab(event,'identity')">Identity</button>
+        <button class="doc-tab active" onclick="showDocTab(event,'identity')">ID Cards</button>
         <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
         <button class="doc-tab" onclick="showDocTab(event,'property')">Property</button>
         <button class="doc-tab" onclick="showDocTab(event,'work')">Work & Education</button>
@@ -68,12 +66,12 @@
           <div>No.</div><div>Details</div><div>View</div>
         </div>
         <div class="doc-row">
-          <div>1</div><div>National ID Card</div>
-          <button onclick="viewPDF('p1.pdf')">View</button>
+          <div>1</div><div>Jeff's ID Card</div>
+          <button onclick="viewPDF('jeffid.pdf')">View</button>
         </div>
         <div class="doc-row">
-          <div>2</div><div>Passport</div>
-          <button onclick="viewPDF('p1.pdf')">View</button>
+          <div>2</div><div>Izzy's ID Card</div>
+          <button onclick="viewPDF('izzyid.pdf')">View</button>
         </div>
       </div>
 
@@ -81,9 +79,19 @@
         <div class="empty-msg">No family documents added.</div>
       </div>
 
-      <div id="property" class="doc-page" data-empty="true">
-        <div class="empty-msg">No property documents added.</div>
-      </div>
+      <div id="property" class="doc-page" data-empty="false">
+  <div class="doc-header">
+    <div>No.</div>
+    <div>Details</div>
+    <div>View</div>
+  </div>
+
+  <div class="doc-row">
+    <div>1</div>
+    <div>Updated Property Schedule of H16-01-04 (04.12.2025)</div>
+    <button onclick="viewPDF('160104schedule.pdf')">View</button>
+  </div>
+</div>
 
       <div id="work" class="doc-page" data-empty="true">
         <div class="empty-msg">No work & education documents added.</div>

@@ -5,13 +5,17 @@
   font-family: Arial, sans-serif;
 }
 
+body {
+  background-color: #000000;
+}
+
 html {
   color-scheme: light;
 }
 
 /* ===== Top Navigation ===== */
 .top-nav {
-  background: #1f2937;
+  background: #0fb9b1;
   color: white;
   padding: 12px 16px;
   display: flex;
@@ -81,7 +85,7 @@ html {
 }
 
 .doc-tab.active {
-  background: #1f2937;
+  background: #0fb9b1;
   color: white;
 }
 
@@ -112,7 +116,7 @@ html {
 }
 
 .doc-row button {
-  background: #1f2937;
+  background: #0fb9b1;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -146,7 +150,7 @@ html {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #1f2937;
+    background: #0fb9b1;
     position: absolute;
     top: 100%;
     left: 0;
@@ -231,7 +235,7 @@ html {
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  background: #1f2937;
+  background: #0fb9b1;
   color: white;
 }
 
@@ -393,7 +397,7 @@ html {
   padding: 2px 6px; /* make buttons small */
   font-size: 12px;
   border-radius: 4px;
-  background: #1f2937;
+  background: #0fb9b1;
   color: white;
   border: none;
   cursor: pointer;
@@ -512,39 +516,51 @@ input:checked + .slider:before {
 #splash-screen {
   position: fixed;
   inset: 0;
+
+  background-color: #000000;
+  background-image: url("portalicon.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: url('portalicon.jpg') center/cover no-repeat;
-  background-size: cover;
-  opacity: 0; /* start hidden */
-  z-index: 1000;
-  transition: opacity 1s ease, transform 1s ease;
-  transform: scale(1); /* start at normal size */
-}
+  justify-content: center;
 
-#splash-screen.show {
-  opacity: 1; /* fade-in */
-}
+  opacity: 1;
+  z-index: 3000;
 
-#splash-screen .splash-text {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  color: #fff;
-  opacity: 0;
   transition: opacity 1s ease;
 }
 
-#splash-screen.show .splash-text {
-  opacity: 1; /* fade-in text */
+/* Text styling */
+#splash-screen .splash-text {
+  margin-top: 20px;
+  font-size: clamp(18px, 4vw, 32px);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease, transform 1s ease;
+
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
-/* Mobile responsive */
+/* Text fade-in */
+#splash-screen.show .splash-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile fine-tuning */
 @media (max-width: 600px) {
   #splash-screen .splash-text {
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 0 10px;
+    font-size: 1.1rem;
+    padding: 0 12px;
+    letter-spacing: 1.5px;
   }
 }
