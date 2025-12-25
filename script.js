@@ -21,16 +21,19 @@ window.onload = () => {
     splash.style.opacity = "0";
   }, 2200);
 
-  // Remove splash & show PIN
-  setTimeout(() => {
-    splash.style.display = "none";
-    lockScreen.classList.remove("hidden");
+  // Remove splash & show APP directly (PIN temporarily disabled)
+setTimeout(() => {
+  splash.style.display = "none";
 
-    // Load Firebase data
-    loadTodosFromFirebase();
-    loadGiftsFromFirebase();
-    loadEventsFromFirebase(); // NEW: load events
-  }, 3200);
+  lockScreen.classList.add("hidden"); // keep PIN hidden
+  app.classList.remove("hidden");     // show app directly
+
+  // Load Firebase data
+  loadTodosFromFirebase();
+  loadGiftsFromFirebase();
+  loadEventsFromFirebase();
+}, 3200);
+
 };
 
 // ===== PIN CHECK =====
