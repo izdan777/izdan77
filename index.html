@@ -67,52 +67,61 @@
   <div class="content">
 
     <!-- DOCUMENTS PAGE -->
-    <div id="documents" class="page active">
-      <h2>📁 Documents</h2>
+<div id="documents" class="page active">
+  <h2>📁 Documents</h2>
 
-      <div class="doc-tabs">
-        <button class="doc-tab active" onclick="showDocTab(event,'identity')">ID Cards</button>
-        <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
-        <button class="doc-tab" onclick="showDocTab(event,'property')">Property</button>
-        <button class="doc-tab" onclick="showDocTab(event,'work')">Work & Education</button>
-      </div>
-
-      <div id="identity" class="doc-page active" data-empty="false">
-        <div class="doc-header">
-          <div>No.</div><div>Details</div><div>View</div>
-        </div>
-        <div class="doc-row">
-          <div>1</div><div>Jeff's ID Card</div>
-          <button onclick="viewPDF('jeffid.pdf')">View</button>
-        </div>
-        <div class="doc-row">
-          <div>2</div><div>Izzy's ID Card</div>
-          <button onclick="viewPDF('izzyid.pdf')">View</button>
-        </div>
-      </div>
-
-      <div id="family" class="doc-page" data-empty="true">
-        <div class="empty-msg">No family documents added.</div>
-      </div>
-
-      <div id="property" class="doc-page" data-empty="false">
-  <div class="doc-header">
-    <div>No.</div>
-    <div>Details</div>
-    <div>View</div>
+  <div class="doc-tabs">
+    <button class="doc-tab active" onclick="showDocTab(event,'identity')">ID Cards</button>
+    <button class="doc-tab" onclick="showDocTab(event,'family')">Family</button>
+    <button class="doc-tab" onclick="showDocTab(event,'property')">Property</button>
+    <button class="doc-tab" onclick="showDocTab(event,'work')">Work & Education</button>
   </div>
 
-  <div class="doc-row">
-    <div>1</div>
-    <div>Updated Property Schedule of H16-01-04 (04.12.2025)</div>
-    <button onclick="viewPDF('160104schedule.pdf')">View</button>
+  <!-- ID CARDS TAB -->
+  <div id="identity" class="doc-page active" data-empty="false">
+    <div class="doc-header">
+      <div>No.</div><div>Details</div><div>View</div>
+    </div>
+    <div class="doc-row">
+      <div>1</div><div>Jeff's ID Card</div>
+      <button onclick="viewPDF('jeffid.pdf')">View</button>
+    </div>
+    <div class="doc-row">
+      <div>2</div><div>Izzy's ID Card</div>
+      <button onclick="viewPDF('izzyid.pdf')">View</button>
+    </div>
+  </div>
+
+  <!-- FAMILY TAB -->
+  <div id="family" class="doc-page" data-empty="true">
+    <div class="empty-msg">No family documents added.</div>
+  </div>
+
+  <!-- PROPERTY TAB -->
+  <div id="property" class="doc-page" data-empty="false">
+    <div class="doc-header">
+      <div>No.</div><div>Details</div><div>View</div>
+    </div>
+    <div class="doc-row">
+      <div>1</div>
+      <div>Updated Property Schedule of H16-01-04 (04.12.2025)</div>
+      <button onclick="viewPDF('160104schedule.pdf')">View</button>
+    </div>
+  </div>
+
+  <!-- WORK & EDUCATION TAB -->
+  <div id="work" class="doc-page" data-empty="false">
+    <div class="doc-header">
+      <div>No.</div><div>Details</div><div>View</div>
+    </div>
+    <div class="doc-row">
+      <div>1</div>
+      <div>Portfolio - Education Document</div>
+      <button onclick="viewPDF('portfolio.pdf')">View</button>
+    </div>
   </div>
 </div>
 
-      <div id="work" class="doc-page" data-empty="true">
-        <div class="empty-msg">No work & education documents added.</div>
-      </div>
-    </div>
 
  <div id="events" class="page">
   <h2>📅 Events</h2>
