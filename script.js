@@ -1,54 +1,9 @@
-// ===== PIN CONFIG =====
-const CORRECT_PIN = "0757";
 
 // ===== ON LOAD =====
 window.onload = () => {
-  const splash = document.getElementById("splash-screen");
-  const splashText = splash.querySelector(".splash-text");
-  const lockScreen = document.getElementById("lockScreen");
-  const app = document.getElementById("app");
-
-  lockScreen.classList.add("hidden");
-  app.classList.add("hidden");
-
-  // Fade text in
-  setTimeout(() => {
-    splash.classList.add("show");
-  }, 400);
-
-  // Fade splash out
-  setTimeout(() => {
-    splash.style.opacity = "0";
-  }, 2200);
-
-  // Remove splash & show PIN
-  setTimeout(() => {
-    splash.style.display = "none";
-    lockScreen.classList.remove("hidden");
-
-    // Load Firebase data
-    loadTodosFromFirebase();
-    loadGiftsFromFirebase();
-    loadEventsFromFirebase(); // NEW: load events
-  }, 3200);
-};
-
-// ===== PIN CHECK =====
-window.checkPIN = function () {
-  const pin = document.getElementById("pinInput").value;
-  const error = document.getElementById("pinError");
-
-  if (pin === CORRECT_PIN) {
-    document.getElementById("lockScreen").classList.add("hidden");
-    document.getElementById("app").classList.remove("hidden");
-  } else {
-    error.textContent = "Incorrect PIN";
-  }
-};
-
-window.cancelApp = function () {
-  document.getElementById("pinInput").value = "";
-  document.getElementById("pinError").textContent = "";
+  loadTodosFromFirebase();
+  loadGiftsFromFirebase();
+  loadEventsFromFirebase();
 };
 
 // ===== NAVIGATION =====

@@ -28,26 +28,8 @@
 
 <body>
 
-  <!-- Splash Screen -->
-<div id="splash-screen">
-  <div class="splash-text">WELCOME TO THE PORTAL</div>
-</div>
-
-<!-- 🔐 PIN LOCK SCREEN -->
-<div id="lockScreen" class="lock-screen">
-  <div class="lock-card">
-    <h2>🔐 Enter PIN</h2>
-    <input type="password" id="pinInput" maxlength="4" inputmode="numeric" placeholder="4-digit PIN">
-    <div class="lock-actions">
-      <button onclick="checkPIN()">Enter</button>
-      <button class="cancel" onclick="cancelApp()">Cancel</button>
-    </div>
-    <p id="pinError" class="pin-error"></p>
-  </div>
-</div>
-
 <!-- 🔓 MAIN APP -->
-<div id="app" class="app hidden">
+<div id="app" class="app">
 
   <div class="top-nav">
     <div class="logo">My Portal</div>
